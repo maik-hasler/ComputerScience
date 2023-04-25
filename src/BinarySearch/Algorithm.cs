@@ -2,33 +2,35 @@
 
 public static class Algorithm
 {
-    public static int BinarySearch(int[] array, int target)
+    public static int BinarySearch(int[] A, int T)
     {
-        int leftBoundary = 0;
+        int L = 0;
 
-        int rightBoundary = array.Length - 1;
+        int R = A.Length - 1;
 
-        while (leftBoundary <= rightBoundary)
+        int M = -1;
+
+        while (L <= R)
         {
-            int pointer = (int)Math.Floor((decimal)((leftBoundary + rightBoundary) / 2));
+            M = (int)Math.Floor((decimal)((L + R) / 2));
 
-            if (array[pointer] < target)
+            if (A[M] < T)
             {
-                leftBoundary = pointer + 1;
+                L = M + 1;
 
                 continue;
             }
 
-            if (array[pointer] > target)
+            if (A[M] > T)
             {
-                rightBoundary = pointer - 1;
+                R = M - 1;
 
                 continue;
             }
 
-            return pointer;
+            return M;
         }
 
-        throw new Exception();
+        return M;
     }
 }
